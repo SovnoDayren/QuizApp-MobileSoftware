@@ -41,7 +41,7 @@ fun QuizScreen(
     categoryId: String,//어느 카테고리의 퀴즈인지 저장하기 위함
     onQuizFinished: (score: Int, total: Int) -> Unit //문제가 다 끝난 뒤, 점수와 총 문제 수를 넘기기 위함
 ) {
-    LaunchedEffect(Unit) { WrongAnswerStore.clear() } //컴포저블이 처음 활성화될 때 오답 목록 초기화
+    //LaunchedEffect(Unit) { WrongAnswerStore.clear() } //컴포저블이 처음 활성화될 때 오답 목록 초기화
 
     if (question.isEmpty()) { //퀴즈가 할당되지 않았으면
         Box(

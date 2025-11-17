@@ -94,7 +94,7 @@ fun CategoryScreen(onStartQuiz:(String)->Unit = {}, // 퀴즈 시작 버튼이 �
                 color = MaterialTheme.colorScheme.primary
             )
         }
-        Spacer(modifier = Modifier.height(300.dp))
+        Spacer(modifier = Modifier.height(250.dp))
 
         //퀴즈 시작 버튼 & 랭킹 버튼
         Box(modifier = Modifier.fillMaxSize()) { //남은 영역 전체를 사용

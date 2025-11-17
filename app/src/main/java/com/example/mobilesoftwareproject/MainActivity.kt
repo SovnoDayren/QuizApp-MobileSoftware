@@ -25,6 +25,7 @@ import com.example.mobilesoftwareproject.data.QuizData
 import com.example.mobilesoftwareproject.data.RankingStore
 import com.example.mobilesoftwareproject.data.WrongAnswerStore
 import com.example.mobilesoftwareproject.model.Ranking
+import com.example.mobilesoftwareproject.model.WrongAnswer
 import com.example.mobilesoftwareproject.navigation.Screen
 import com.example.mobilesoftwareproject.ui.theme.CategoryScreen
 import com.example.mobilesoftwareproject.ui.theme.MobileSoftWareProjectTheme
@@ -42,7 +43,8 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val context = this
-        //RankingStore.clearAll(context)
+        WrongAnswerStore.clear()
+        RankingStore.clearAll(context)
         enableEdgeToEdge()
         setContent {
             MobileSoftWareProjectTheme {
