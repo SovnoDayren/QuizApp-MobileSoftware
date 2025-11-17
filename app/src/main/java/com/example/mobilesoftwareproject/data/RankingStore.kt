@@ -17,14 +17,15 @@ object RankingStore{
             .filter{it.isNotBlank()} // 빈 문자열 베제
             .mapNotNull { line -> // 각 줄 순회
                 val parts = line.split("|")
-                if(parts.size != 4) return@mapNotNull null // 저장된 데이텨 형식이 잘못됬으면 데이터 무시 후 null 반환
+                if(parts.size != 5) return@mapNotNull null // 저장된 데이텨 형식이 잘못됬으면 데이터 무시 후 null 반환
 
                 val name = parts[0]
                 val score = parts[1].toInt()
                 val total = parts[2].toInt()
                 val categoryID = parts[3]
+                val date = parts[4]
 
-                Ranking(name, score, total,categoryID) // 랭킹 하나의 객체 생성
+                Ranking(name, score, total,categoryID, date) // 랭킹 하나의 객체 생성
             }
             .sortedByDescending {it.score} // 점수 기준 높은순 정렬
     }
@@ -38,7 +39,7 @@ object RankingStore{
         val current = loadRanking(context).toMutableList() // 가변성 부여
         //같은 기록의 중복 방지
         val already = current.any{
-            it.name == Rank.name && it.score == Rank.score && it.total == Rank.total && it.categoryId == Rank.categoryId
+            it.name == Rank.name && it.score == Rank.score && it.total == Rank.total && it.categoryId == Rank.categoryId && it.date == Rank.date
         }
         if(!already){ // 중복된 기록이 없을 때만 추가
             current.add(Rank)
@@ -49,7 +50,7 @@ object RankingStore{
 
         //다시 문자열로 변환해서 Shared_pref에 저장되도록함
         val toStore: String = sorted10.joinToString(separator = "\n") { r ->
-            "${r.name}|${r.score}|${r.total}|${r.categoryId}"
+            "${r.name}|${r.score}|${r.total}|${r.categoryId}|${r.date}"
         }
         //객체 가져오기 - 위의 문자열을 넣기 위함
         val prefs = context.getSharedPreferences(FILE_NAME,Context.MODE_PRIVATE)

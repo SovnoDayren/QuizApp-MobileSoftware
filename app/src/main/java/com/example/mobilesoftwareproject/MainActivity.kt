@@ -29,6 +29,10 @@ import com.example.mobilesoftwareproject.ui.theme.QuizScreen
 import com.example.mobilesoftwareproject.ui.theme.RankingScreen
 import com.example.mobilesoftwareproject.ui.theme.ResultScreen
 import com.example.mobilesoftwareproject.ui.theme.WrongNoteScreen
+import java.text.SimpleDateFormat
+import java.time.LocalDate
+import java.util.Date
+import java.util.Locale
 
 
 class MainActivity : ComponentActivity() {
@@ -124,11 +128,14 @@ fun QuizNavHost() {
                     )
                 },
                 onSaveRanking = { name ->
+                    val currentDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+                        .format(Date())
                     val item = Ranking(
                         name = name,
                         score = score,
                         total = total,
-                        categoryId = categoryId
+                        categoryId = categoryId,
+                        date = currentDate      // 날짜 추가
                     )
                     RankingStore.addRanking(context, item)
                 }

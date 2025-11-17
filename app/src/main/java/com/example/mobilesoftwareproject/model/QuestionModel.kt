@@ -13,7 +13,8 @@ data class Ranking(
     val name:String, // 유저 이름
     val score:Int, // 맞춘 문제 수
     val total:Int, // 총 점수
-    val categoryId: String // 어떤 카테고리의 랭킹인가
+    val categoryId: String, // 어떤 카테고리의 랭킹인가
+    val date:String // 날짜
 )
 //오답 노트 구조
 data class WrongAnswer(

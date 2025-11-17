@@ -1,5 +1,6 @@
 package com.example.mobilesoftwareproject.ui.theme
 
+import android.graphics.Color
 import android.graphics.Paint
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -100,11 +101,17 @@ fun RankingRow(rank: Int, item: Ranking){
                 modifier =Modifier.weight(1f)
             ){
                 Text(
-                    text = item.name + " -> ",
+                    text = item.name,
+                    modifier = Modifier.padding(end = 20.dp),
                     style = MaterialTheme.typography.bodyLarge
                 )
                 Text(
                     text = "점수 : ${item.score} / ${item.total}",
+                    style = MaterialTheme.typography.bodyMedium
+                )
+                Text(
+                    modifier = Modifier.padding(start = 20.dp),
+                    text = "[날짜 : ${item.date}]",
                     style = MaterialTheme.typography.bodyMedium
                 )
             }
@@ -117,9 +124,9 @@ fun RankingRow(rank: Int, item: Ranking){
 @Composable
 fun RankingScreenPreview(){
     val sampledata = listOf(
-        Ranking("사용자1",5,6, categoryId = "movie"),
-        Ranking("사용자2",3,6, categoryId = "movie"),
-        Ranking("사용자3",4,6, categoryId = "movie"),
+        Ranking("사용자1",5,6, categoryId = "movie",date = "2025-11-16"),
+        Ranking("사용자2",3,6, categoryId = "movie",date = "2025-11-15"),
+        Ranking("사용자3",4,6, categoryId = "movie", date = "2025-11-14"),
     )
     MobileSoftWareProjectTheme{
         RankingScreen(

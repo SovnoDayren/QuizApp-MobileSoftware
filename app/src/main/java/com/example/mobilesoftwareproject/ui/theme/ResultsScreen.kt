@@ -93,6 +93,7 @@ fun ResultScreen(score:Int,
                 onClick = {
                     val finalName = if(name.isBlank()) "익명" else name
                     onSaveRanking(finalName)
+                    onSaveRanking(finalName)
                     saveCompleted = true
                           },
                 modifier = Modifier
